@@ -110,7 +110,7 @@ body {
 
 @media screen and (max-width: 767px) {
     .contenedor {
-        width: 80vw;
+        width: 75vw;
     }
 
     .gameboard {
@@ -135,7 +135,7 @@ body {
 
 @media screen and (max-width: 480px) {
     .contenedor {
-        width: 80vw;
+        width: 78vw;
     }
     
     .gameboard {
