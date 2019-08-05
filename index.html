@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Comenzando el Juego</title>
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Concert+One|Grenze|Lobster|Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilosJuego.css">
+</head>
+<body>
+
+    <div class="contenedor">
+        <div class="nivel">
+            <p id="nivel" class="nivel_actual"></p>
+            <p class="nivel_actual"><span id="hh">00</span> : <span id="mm">00</span> : <span id="ss">00</span> : <span id="mls">00</span></p>
+        </div>
+        <div class="gameboard">
+            <div id="celeste" class="color celeste left" data-color="celeste"></div>
+            <div id="violeta" class="color violeta right" data-color='violeta'></div>
+            <div id="naranja" class="color naranja left" data-color='naranja'></div>
+            <div id="verde" class="color verde right" data-color='verde'></div>
+            <button id="btnEmpezar" class="btn-start">Empezar a Jugar!</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="js/secuencia.js"></script>
+</body>
+</html>
+<!--
+¿Por que en algunas ocaciones cuando se usa el setTimeOut se usa una arrow function y en otras no?
+
+R/. Para cambiar el contexto del this, recuerda que con una arrow function el this se va al objeto directo superior que sería la clase juego en este sentido, si pones la funcion normal entonces se iría al contexto global que es window!.
+    Sacha para solucionar el problema puso bind, yo solo cambié a una arrow y el contexto fue el que yo quería!
+-->
+
+<!-- Una forma para crear sonido sin utilizar una pista de sonido es utilizando la interface OscillatorNode 
+    la cual sirve para reproducir frecuencias en específico, esta interface nos ofrece algunos tipos de sonido
+     y solo basta con crear el objeto y poner los atributos deseados -->
