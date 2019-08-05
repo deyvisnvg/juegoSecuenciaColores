@@ -79,8 +79,8 @@ body {
     background: rgb(226, 226, 235);
     width: 400px;
     height: 80px;
-    top: calc(55% - 7px);
-    left: calc(50% - 200px);
+    top: calc(55% - 13px);
+    left: calc(50% - 201px);
     font-size: 36px;
 }
 
@@ -121,7 +121,7 @@ body {
     .btn-start {
         width: 310px;
         height: 61px;
-        top: calc(55% - 1px);
+        top: calc(55% - 10px);
         left: calc(50% - 155px);
         font-size: 2.1em;
     }
@@ -146,8 +146,8 @@ body {
     .btn-start {
         width: 260px;
         height: 49px;
-        top: calc(57% - 14px);
-        left: calc(50% - 129px);
+        top: calc(56% - 18px);
+        left: calc(50% - 130px);
         font-size: 1.5em;
     }
 
