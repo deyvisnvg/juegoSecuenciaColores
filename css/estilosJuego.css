@@ -170,7 +170,7 @@ body {
     .btn-start {
         width: 200px;
         height: 39px;
-        top: calc(57% - 12px);
+        top: calc(55% - 10px);
         left: calc(50% - 100px);
         font-size: 1.2em;
     }
