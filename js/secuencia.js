@@ -16,10 +16,7 @@ const context = new (window.AudioContext || window.webkitAudioContext)();
 /////////////////////////////////////////////////////////////////////////
 ///////////////// VARIABLES PARA EL CRONÓMETRO /////////////////////////
 ///////////////////////////////////////////////////////////////////////
-const hh = document.getElementById('hh');
-const mm = document.getElementById('mm');
-const ss = document.getElementById('ss');
-const mls = document.getElementById('mls');
+const relojCronometro = document.getElementById('relojCronometro');
 /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 
@@ -70,67 +67,33 @@ class Juego {
     }
 
     start() {
-        this.hora = 0;
-        this.minuto = 0;
-        this.segundo = 0;
-        this.millisegundo = 0;
-        this.control = setInterval(() => this.cronometro(), 10);
+        this.timeInicial = new Date();
+        this.control = setInterval(() => this.cronometro(), 10);//Se ejecuta cada 10 millisegundos
     }
 
     cronometro() {
-        if (this.millisegundo == 99) {
-            this.millisegundo = 0;
-            this.segundo++;
-            if (this.segundo < 10) { 
-                ss.innerHTML = "0" + this.segundo; 
-            } else if (this.segundo > 10){
-                ss.innerHTML = this.segundo;
-                if (this.segundo == 60) {
-                    ss.innerHTML = "0" + (this.segundo - this.segundo);
-                }
-            }
-            
-            if (this.segundo == 60) {
-                this.segundo = 0;
-                this.minuto++;
-                if (this.minuto < 10) {
-                    mm.innerHTML = "0" + this.minuto;
-                } else if(this.minuto > 10) {
-                    mm.innerHTML = this.minuto;
-                    if (this.minuto == 60) {
-                        mm.innerHTML = "0" + (this.minuto - this.minuto);
-                    }
-                }
+        this.timeActual = new Date();
+        const timeAcumulador = this.timeActual - this.timeInicial; //Restamos el tiempo Actual menos el tiempo inicial, y como resultado nos da en millisegundos.
+        const timeAcumulador2 = new Date();
+        timeAcumulador2.setTime(timeAcumulador); //Recibe el setTime un valor en millisegundos y da como resultado una fecha específica a partir desde el 1 de enero de 1970
 
+        var millisegundos = Math.round(timeAcumulador2.getMilliseconds()/10);
+        var segundos = timeAcumulador2.getSeconds(); //Get the second (0-59)
+        var minutos = timeAcumulador2.getMinutes(); //Get the minute (0-59)
+        var horas = timeAcumulador2.getHours() - 19; //Get the hour (0-23)
 
-                if (this.minuto == 60) {
-                    this.minuto = 0;
-                    this.hora++;
-                    if (this.hora < 10) {
-                        hh.innerHTML = "0" + this.hora;
-                    } else {
-                        hh.innerHTML = this.hora;
-                    }
+        if (millisegundos < 10) { millisegundos = "0" + millisegundos; }
+        if (segundos < 10) { segundos = "0" + segundos; }
+        if (minutos < 10) { minutos = "0" + minutos; }
+        if (horas < 10) { horas = "0" + horas; }
 
-                }
-            }
-        }
+        relojCronometro.innerHTML = horas + " : " + minutos + " : " + segundos + " : " + millisegundos;
 
-        this.millisegundo++;
-        if (this.millisegundo < 10) {
-            mls.innerHTML = "0" + this.millisegundo;
-        } else {
-            mls.innerHTML = this.millisegundo;
-        }
-        
     }
 
     resetCronometro() {
         clearInterval(this.control);
-        hh.innerHTML = "00";
-        mm.innerHTML = "00";
-        ss.innerHTML = "00";
-        mls.innerHTML = "00";
+        relojCronometro.innerHTML = "00 : 00 : 00 : 00";
     }
 
     stopCronometro() {
